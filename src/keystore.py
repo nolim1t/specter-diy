@@ -32,6 +32,11 @@ class KeyStore:
         self._wallets = []
         self.network = None
         self.storage_root = storage_root
+        try:
+            os.mkdir(self.storage_root)
+        except OSError as e:
+            if not "EEXIST" in str(e):
+                raise
         self.storage_path = None
         self.idkey = None
         self.fingerprint = None
@@ -58,12 +63,14 @@ class KeyStore:
         try: # create network folder
             d = "/".join(self.storage_path.split("/")[:-1])
             os.mkdir(d)
-        except:
-            pass
+        except OSError as e:
+            if not "EEXIST" in str(e):
+                raise
         try:
             os.mkdir(self.storage_path)
-        except:
-            pass
+        except OSError as e:
+            if not "EEXIST" in str(e):
+                raise
         files = [f[0] for f in os.ilistdir(self.storage_path) if f[0].endswith("_wallet.json")]
         self._wallets = []
         for fname in files:

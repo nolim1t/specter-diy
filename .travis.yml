@@ -14,6 +14,7 @@ addons:
             - binutils-arm-none-eabi 
             - gdb-arm-none-eabi 
             - openocd
+            - libsdl2-dev
             - ccache
 
 before_install:

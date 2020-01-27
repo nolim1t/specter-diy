@@ -1,0 +1,22 @@
+language: python
+os: linux
+dist: xenial
+cache:
+    pip: true
+    ccache: true
+    directories:
+        - f469-disco
+
+addons:
+    apt:
+        packages:
+            - gcc-arm-none-eabi 
+            - binutils-arm-none-eabi 
+            - gdb-arm-none-eabi 
+            - openocd
+            - ccache
+
+before_install:
+  - ./specter.sh builddeps
+script: 
+  - ./specter.sh tests

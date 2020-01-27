@@ -1,5 +1,7 @@
 # Specter-DIY
 
+[![Build Status](https://travis-ci.org/cryptoadvance/specter-diy.svg?branch=master)](https://travis-ci.org/cryptoadvance/specter-diy)
+
 ## DISCLAIMER
 
 This firmware is **WORK IN PROGRESS — USE AT YOUR OWN RISK**, better on testnet. 

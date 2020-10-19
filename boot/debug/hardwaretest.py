@@ -6,6 +6,9 @@ from platform import delete_recursively, fpath, mount_sdram
 from hosts import QRHost
 from keystore.javacard.util import get_connection
 
+# version 0.1.1
+version = "<version:tag10>0102313101</version:tag10>"
+
 class HardwareTest:
     def __init__(self):
         self.rampath = mount_sdram()
@@ -26,8 +29,9 @@ class HardwareTest:
             (4, "Test smartcard"),
         ]
         while True:
+            ver = version.split(">")[1].split("<")[0]
             res = await self.gui.menu(buttons,
-                        title="Factory test",
+                        title="Factory test v %s" % ver,
                         note="This firmware is used to test electrical connections between the discovery board and other components.\nIt can also erase the content of the internal storage\n(factory reset).")
             if res == 1:
                 conf = await self.gui.prompt("Wipe the device?",

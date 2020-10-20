@@ -2,6 +2,8 @@
 # can run arbitrary Python, but best to keep it minimal
 import pyb, os
 
+version = "<version:tag10>0102313101</version:tag10>"
+
 # power hold
 pwr = pyb.Pin("B15", pyb.Pin.OUT)
 pwr.on()
